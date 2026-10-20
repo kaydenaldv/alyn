@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Until You're Happy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --text-primary: #e0e0e0;
+            --text-secondary: #888888;
+            --accent-glow: rgba(255, 255, 255, 0.03);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.8;
+        }
+
+        /* Ambient Background Effect */
+        .bg-glow {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60vw;
+            height: 60vh;
+            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0) 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Audio Player Widget Floating */
+        .audio-container {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 100;
+            background: rgba(20, 20, 20, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .music-info {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .music-title {
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 300;
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 120px 24px 180px 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Typography */
+        p.quote-line {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.45rem;
+            font-weight: 300;
+            color: var(--text-primary);
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            letter-spacing: 0.2px;
+        }
+
+        p.quote-line.visible {
+            opacity: 0.9;
+            transform: translateY(0);
+        }
+
+        /* Closing Section Styling */
+        .closing-section {
+            margin-top: 120px;
+            padding-top: 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .closing-line {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 1.2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1.5s ease, transform 1.5s ease;
+        }
+
+        .closing-line.final {
+            color: #ffffff;
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            font-style: normal;
+            letter-spacing: 2px;
+        }
+
+        .closing-line.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            p.quote-line {
+                font-size: 1.25rem;
+                margin-bottom: 2rem;
+            }
+            .closing-line {
+                font-size: 1.35rem;
+            }
+            .closing-line.final {
+                font-size: 1.5rem;
+            }
+            .audio-container {
+                bottom: 15px;
+                right: 15px;
+                left: 15px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow"></div>
+
+    <!-- Music Player (Sombr - My Body Isn't Ready) -->
+    <div class="audio-container">
+        <div style="width: 10px; height: 10px; background-color: #e03e3e; border-radius: 50%; display: inline-block;"></div>
+        <div>
+            <div class="music-info">Now Playing</div>
+            <div class="music-title">SOMBR – my body isn't ready</div>
+        </div>
+        <iframe style="border-radius:12px; display:none;" src="https://open.spotify.com/embed/track/303vA9S2O90uFhG98WwVqB?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" id="spotify-player"></iframe>
+    </div>
+
+    <!-- Story Container -->
+    <div class="container">
+
+        <p class="quote-line">Maybe one day, her new guy will repost something like, "if your past failed to treat you the way you deserve, let me do it." And maybe he'll mean every word of it.</p>
+        
+        <p class="quote-line">But he'll never know the whole story.</p>
+        
+        <p class="quote-line">He'll never know how much I loved that girl, how many times I prayed and asked God to let her be my last.</p>
+        
+        <p class="quote-line">He'll never know how she was the person I wanted to grow with, the person I kept choosing even when things got difficult.</p>
+        
+        <p class="quote-line">I loved every part of her, even the parts she tried to hide, even the flaws she probably thought made her difficult to love. I saw them, and I still stayed.</p>
+        
+        <p class="quote-line">He'll never know how many nights I spent staring at the ceiling, overthinking everything, trying to figure out what I could do differently just to make us work.</p>
+        
+        <p class="quote-line">He'll never know how many times I swallowed my pride, how many times I tried to understand even when I was hurting too, or how many times I blamed myself for the things I could've handled better.</p>
+        
+        <p class="quote-line">He won't know about the mistakes I made either. How sometimes I let my anger speak for me, brought up things from the past when we were already dealing with something new, reacted without thinking, and became a version of myself I'm not proud of.</p>
+        
+        <p class="quote-line">He won't know how much I tried to fix things after realizing I was wrong, or how badly I wished I had understood everything sooner.</p>
+        
+        <p class="quote-line">He'll never know how much of my own peace I gave just trying to hold on to what we had.</p>
+        
+        <p class="quote-line">And maybe he doesn't need to know.</p>
+        
+        <p class="quote-line">Because he's going to have his own story with her, and I hope he treats her with the love, patience, and understanding I sometimes failed to give her. I hope he gives her the kind of peace I wanted her to have, even if I couldn't always give it myself.</p>
+        
+        <p class="quote-line">So if one day I see them happy, I won't compete with that. I'll just quietly smile and wish them the best.</p>
+        
+        <p class="quote-line">Because no matter how much our story hurt me, I still want her to be happy.</p>
+        
+        <p class="quote-line">And maybe that's the hardest part—knowing I once prayed for her to be my last, and now I have to learn how to genuinely pray that she finds happiness, even if it's with someone else.</p>
+
+        <!-- Closing Part -->
+        <div class="closing-section">
+            <p class="closing-line">the grief doesn't go away</p>
+            <p class="closing-line">the grief doesn't shrink</p>
+            <p class="closing-line">the grief stays</p>
+            <br>
+            <p class="closing-line final">and we grow.</p>
+        </div>
+
+    </div>
+
+    <!-- Scroll Animation Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const lines = document.querySelectorAll('.quote-line, .closing-line');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -15% 0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            lines.forEach(line => {
+                observer.observe(line);
+            });
+        });
+    </script>
+</body>
+</html>
